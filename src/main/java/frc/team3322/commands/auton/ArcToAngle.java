@@ -1,8 +1,8 @@
-package frc.robot.commands.auton;
+package frc.team3322.commands.auton;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import static frc.robot.Robot.drivetrain;
+import static frc.team3322.Robot.drivetrain;
 
 
 public class ArcToAngle extends Command {
