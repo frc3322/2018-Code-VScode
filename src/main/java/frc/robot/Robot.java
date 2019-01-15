@@ -5,13 +5,9 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-<<<<<<< HEAD:src/main/java/frc/team3322/Robot.java
 // did this commit and push?
 
-package frc.team3322;
-=======
 package frc.robot;
->>>>>>> 72de263e105b889e6a06bc069abcf6c96a4cbfc5:src/main/java/frc/robot/Robot.java
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
