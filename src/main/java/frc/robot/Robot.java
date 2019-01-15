@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.team3322;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team3322.commands.auton.Auton;
-import frc.team3322.subsystems.Arms;
-import frc.team3322.subsystems.Drivetrain;
-import frc.team3322.subsystems.Elevator;
-import frc.team3322.subsystems.Intakes;
+import frc.robot.commands.auton.Auton;
+import frc.robot.subsystems.Arms;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Intakes;
 
 /**
  * The VM is configured to automatically run this class, and to call the

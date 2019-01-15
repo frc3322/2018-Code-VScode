@@ -1,10 +1,10 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.team3322.RobotMap;
+import frc.robot.RobotMap;
 
-import static frc.team3322.Robot.elevator;
-import static frc.team3322.Robot.oi;
+import static frc.robot.Robot.elevator;
+import static frc.robot.Robot.oi;
 
 
 public class ElevatorControl extends Command {

@@ -1,8 +1,8 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-import static frc.team3322.Robot.drivetrain;
+import static frc.robot.Robot.drivetrain;
 
 
 public class ShiftDrivetrain extends InstantCommand {

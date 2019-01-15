@@ -1,9 +1,9 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import static frc.team3322.Robot.arms;
-import static frc.team3322.Robot.intakes;
+import static frc.robot.Robot.arms;
+import static frc.robot.Robot.intakes;
 
 
 public class EjectCube extends Command {

@@ -1,9 +1,9 @@
-package frc.team3322.commands.auton;
+package frc.robot.commands.auton;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team3322.Robot;
-import frc.team3322.commands.*;
+import frc.robot.Robot;
+import frc.robot.commands.*;
 
 
 public class Auton extends CommandGroup {

@@ -5,13 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.team3322;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.team3322.commands.*;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -39,7 +39,7 @@ public class OI
         button_y.whileHeld(new EjectCube(.5));
 
         bumper_left.whileHeld(new EjectCube(.35));
-        bumper_right.whileHeld(new PreparePickupCube());
+        bumper_right.whileHeld(new ArmsToPreparePickup());
         bumper_right.whenReleased(new PickupCube());
 
         stick_left.whenPressed(new ShiftDrivetrain());

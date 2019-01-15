@@ -1,9 +1,9 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.team3322.subsystems.Arms;
+import frc.robot.subsystems.Arms;
 
-import static frc.team3322.Robot.arms;
+import static frc.robot.Robot.arms;
 
 
 public class CloseArms extends Command {

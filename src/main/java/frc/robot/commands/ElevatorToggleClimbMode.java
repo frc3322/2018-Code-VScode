@@ -1,9 +1,9 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-import static frc.team3322.Robot.elevator;
+import static frc.robot.Robot.elevator;
 
 
 public class ElevatorToggleClimbMode extends InstantCommand {

@@ -1,8 +1,8 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import static frc.team3322.Robot.arms;
+import static frc.robot.Robot.arms;
 
 
 public class ArmsIdle extends Command {

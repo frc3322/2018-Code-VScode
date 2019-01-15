@@ -1,11 +1,11 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team3322.RobotMap;
+import frc.robot.RobotMap;
 
-import static frc.team3322.Robot.drivetrain;
-import static frc.team3322.Robot.oi;
+import static frc.robot.Robot.drivetrain;
+import static frc.robot.Robot.oi;
 
 public class DriveControl extends Command {
 

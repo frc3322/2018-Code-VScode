@@ -1,9 +1,9 @@
-package frc.team3322.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.team3322.subsystems.Elevator;
+import frc.robot.subsystems.Elevator;
 
-import static frc.team3322.Robot.elevator;
+import static frc.robot.Robot.elevator;
 
 public class ElevatorToSwitch extends Command {
     public ElevatorToSwitch() {
