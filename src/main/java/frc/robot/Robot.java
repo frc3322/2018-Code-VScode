@@ -5,8 +5,6 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-// did this commit and push?
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
