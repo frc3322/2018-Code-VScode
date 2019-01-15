@@ -1,11 +1,11 @@
-package frc.robot.subsystems;
+package frc.team3322.subsystems;
 
 
-import com.ctre.phoenix.motorcontrol.can.*;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import frc.robot.commands.IntakeIdle;
+import frc.team3322.RobotMap;
+import frc.team3322.commands.IntakeIdle;
 
 public class Intakes extends Subsystem {
 

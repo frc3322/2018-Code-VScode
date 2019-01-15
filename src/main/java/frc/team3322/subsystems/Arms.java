@@ -1,12 +1,12 @@
-package frc.robot.subsystems;
+package frc.team3322.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.PIDController;
-import frc.robot.RobotMap;
-import frc.robot.commands.ArmsIdle;
+import frc.team3322.PIDController;
+import frc.team3322.RobotMap;
+import frc.team3322.commands.ArmsIdle;
 
 public class Arms extends Subsystem {
 

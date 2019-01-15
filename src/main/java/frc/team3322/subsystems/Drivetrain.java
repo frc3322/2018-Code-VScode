@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.team3322.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.PIDController;
-import frc.robot.RobotMap;
-import frc.robot.commands.DriveControl;
+import frc.team3322.PIDController;
+import frc.team3322.RobotMap;
+import frc.team3322.commands.DriveControl;
 
 public class Drivetrain extends Subsystem {
 
