@@ -19,6 +19,7 @@ import frc.robot.subsystems.Arms;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Intakes;
+import frc.robot.subsystems.Limelight;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot
     public static final Elevator elevator = new Elevator();
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
+    public static final Limelight limelight = new Limelight();
 
     public static OI oi;
 
