@@ -6,19 +6,19 @@ import frc.robot.subsystems.Arms;
 import static frc.robot.Robot.arms;
 
 
-public class CloseArms extends Command {
-    public CloseArms() {
+public class LowerArms extends Command {
+    public LowerArms() {
         requires(arms);
     }
 
     @Override
     protected void execute() {
-        arms.close();
+        arms.lowerArms();
     }
 
     @Override
     protected boolean isFinished() {
-        return arms.haveReached(Arms.POS_CLOSED);
+        return arms.haveReachedParallel();
     }
 
     @Override

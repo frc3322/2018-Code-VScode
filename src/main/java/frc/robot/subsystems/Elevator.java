@@ -13,7 +13,7 @@ public class Elevator extends Subsystem {
 
     public static final double TOP = 56;
     public static final double SCALE = 55;
-    public static final double SWITCH = 18;
+    public static final double SWITCH = 11;
     public static final double BOTTOM = 1;
 
     // TODO implement climbing mode
@@ -26,7 +26,7 @@ public class Elevator extends Subsystem {
     private static final double DOWN_SPEED_MODIFIER = .75;
 
     private double upSpeed = .5;
-    private double downSpeed = .3;
+    private double downSpeed = .1;
 
     public double downSpeedModifier = .75;
 
@@ -113,7 +113,7 @@ public class Elevator extends Subsystem {
 
     public double getHeight() {
         if (encoder != null) {
-            return toInchRatio(encoder.getDistance());
+            return encoder.getDistance();
         }
         return -1;
     }
@@ -127,10 +127,12 @@ public class Elevator extends Subsystem {
     }
 
     public boolean isAtTop() {
-        return getHeight() >= TOP;
+       //return getHeight() >= TOP;
+        return false;
     }
 
     public boolean isAtBottom() {
-        return getHeight() <= BOTTOM;
+        //return getHeight() <= BOTTOM;
+        return false;
     }
 }

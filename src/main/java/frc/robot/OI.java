@@ -19,28 +19,29 @@ import frc.robot.commands.*;
  */
 public class OI 
 {
-    public Joystick stick = new Joystick(0);
+    public Joystick chassisStick = new Joystick(0);
+    public Joystick aboveChassisStick = new Joystick(1);
 
-    Button button_a = new JoystickButton(stick, RobotMap.XBOX.BUTTON_A);
-    Button button_b = new JoystickButton(stick, RobotMap.XBOX.BUTTON_B);
-    Button button_x = new JoystickButton(stick, RobotMap.XBOX.BUTTON_X);
-    Button button_y = new JoystickButton(stick, RobotMap.XBOX.BUTTON_Y);
-    Button bumper_left = new JoystickButton(stick, RobotMap.XBOX.BUMPER_LEFT);
-    Button bumper_right = new JoystickButton(stick, RobotMap.XBOX.BUMPER_RIGHT);
-    Button button_back = new JoystickButton(stick, RobotMap.XBOX.BUTTON_BACK);
-    Button button_start = new JoystickButton(stick, RobotMap.XBOX.BUTTON_START);
-    Button stick_left = new JoystickButton(stick, RobotMap.XBOX.STICK_LEFT);
-    Button stick_right = new JoystickButton(stick, RobotMap.XBOX.STICK_RIGHT);
+    Button button_a = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_A);
+    Button button_b = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_B);
+    Button button_x = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_X);
+    Button button_y = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_Y);
+    Button bumper_left = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUMPER_LEFT);
+    Button bumper_right = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUMPER_RIGHT);
+    Button button_back = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_BACK);
+    Button button_start = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_START);
+    Button stick_left = new JoystickButton(aboveChassisStick, RobotMap.XBOX.STICK_LEFT);
+    Button stick_right = new JoystickButton(aboveChassisStick, RobotMap.XBOX.STICK_RIGHT);
 
     public OI() {
-        button_a.whileHeld(new OpenArms());
-        button_b.whileHeld(new CloseArms());
+        button_a.whileHeld(new LiftArms());
+        button_b.whileHeld(new LowerArms());
         button_x.whileHeld(new IntakeCube());
         button_y.whileHeld(new EjectCube(.5));
 
         bumper_left.whileHeld(new EjectCube(.35));
-        bumper_right.whileHeld(new PreparePickupCube());
-        bumper_right.whenReleased(new PickupCube());
+        //bumper_right.whileHeld(new PreparePickupCube());
+        //bumper_right.whenReleased(new PickupCube());
 
         stick_left.whenPressed(new ShiftDrivetrain());
         stick_right.toggleWhenPressed(new AutoShiftDrivetrain());
@@ -48,11 +49,11 @@ public class OI
         button_start.whileHeld(new IntakeOpposite());
 
         button_back.toggleWhenPressed(new ToggleClimbMode());
-    }
+        }
 
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
+    // three ways
 
     // Start the command when the button is pressed and let it run the command
     // until it is finished as determined by it's isFinished method.
@@ -85,6 +86,7 @@ public class OI
             stick.setRumble(rumbleType, 0);
         });
         rumble.start();*/
-        stick.setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
+        chassisStick.setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
+        aboveChassisStick.setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
     }
 }
