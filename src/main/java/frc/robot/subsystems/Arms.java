@@ -1,7 +1,9 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.PIDController;
@@ -10,38 +12,39 @@ import frc.robot.commands.ArmsIdle;
 
 public class Arms extends Subsystem {
 
-    private static final double ARMS_KP = .3;
-    private static final double ARMS_DECAY = .2;
-    private static final double ARMS_KI = .2;
-    private static final double ARMS_KD = .3;
-    private static final double MAX_SPEED = .6;
+    private static final double ARMS_KP = 0;
+    private static final double ARMS_DECAY = 0;
+    private static final double ARMS_KI = 0;
+    private static final double ARMS_KD = 0;
+    private static final double MAX_SPEED = 1;
 
     public static final double POS_PREPARE_PICKUP = 40; // @TODO find actual values
     public static final double POS_RETRACTED = 100; // @TODO find actual values
     public static final double POS_CLOSED = -10; // TODO
 
-    private WPI_TalonSRX leftArm = new WPI_TalonSRX(RobotMap.CAN.ARM_LEFT);
-    private WPI_TalonSRX rightArm = new WPI_TalonSRX(RobotMap.CAN.ARM_RIGHT);
+    private WPI_TalonSRX arms = new WPI_TalonSRX(RobotMap.CAN.ARMS);
 
-    private SpeedControllerGroup arms = new SpeedControllerGroup(leftArm, rightArm);
+    PowerDistributionPanel pdp = new PowerDistributionPanel();
 
-    private Encoder enc_left;
-    private Encoder enc_right;
+    // TODO: make arms counter
+    private DigitalInput hallEffectParallel = new DigitalInput(RobotMap.DIO.HALL_EFFECT_PARALLEL);
+    private DigitalInput hallEffectPerpendicular = new DigitalInput(RobotMap.DIO.HALL_EFFECT_PERPENDICULAR);
 
-    PIDController[] pid = new PIDController[2];
+    //private Encoder enc_left;
+    //private Encoder enc_right;
+
+    PIDController[] pid = new PIDController[1];
 
     public Arms() {
-        leftArm.setInverted(true);
+        //leftArm.setInverted(true);
 
-        enc_left = new Encoder(RobotMap.DIO.ARM_LEFT_ENCODER_A, RobotMap.DIO.ARM_LEFT_ENCODER_B);
-        enc_right = new Encoder(RobotMap.DIO.ARM_RIGHT_ENCODER_A, RobotMap.DIO.ARM_RIGHT_ENCODER_B);
+        //enc_left = new Encoder(RobotMap.DIO.ARM_LEFT_ENCODER_A, RobotMap.DIO.ARM_LEFT_ENCODER_B);
+        //enc_right = new Encoder(RobotMap.DIO.ARM_RIGHT_ENCODER_A, RobotMap.DIO.ARM_RIGHT_ENCODER_B);
 
-        pid[0] = new PIDController("Arms left", ARMS_KP, ARMS_DECAY, ARMS_KI, ARMS_KD);
-        pid[1] = new PIDController("Arms right", ARMS_KP, ARMS_DECAY, ARMS_KI, ARMS_KD);
+        pid[0] = new PIDController("Arms", ARMS_KP, ARMS_DECAY, ARMS_KI, ARMS_KD);
 
-        for (int i = 0; i <= 1; ++i) {
-            pid[i].initialize(getRotation(i), getRotation(i));
-        }
+
+        pid[0].initialize(getRotation(), getRotation());
     }
 
     public void initDefaultCommand() {
@@ -49,82 +52,65 @@ public class Arms extends Subsystem {
     }
 
     public void goToRotationInit(double rotation) {
-        pid[0].initialize(rotation, getRotation(0));
-        pid[1].initialize(rotation, getRotation(1));
+        pid[0].initialize(rotation, getRotation());
     }
 
     public void goToRotation() {
-        for (int i = 0; i <= 1; ++i) {
-            double out = pid[i].output(getRotation(i));
-            if (Math.abs(out) > MAX_SPEED) {
-                out = out / Math.abs(out) * MAX_SPEED;
-            }
-
-            set(i, out);
+        double out = pid[0].output(getRotation());
+        if (Math.abs(out) > MAX_SPEED) {
+            out = out / Math.abs(out) * MAX_SPEED;
         }
+
+        set(out);
+
     }
 
-    public void open() {
-        if (haveReached(POS_RETRACTED)) {
-            arms.set(0);
-            return;
-        }
+    public void liftArms() {
+
 
         arms.set(MAX_SPEED);
     }
 
-    public void close() {
-        if (haveReached(POS_CLOSED)) {
-            arms.set(0);
-            return;
-        }
+    public void lowerArms() {
 
         arms.set(-MAX_SPEED);
     }
 
-    public void set(int side, double speed) {
-        if (side == 0) {
-            leftArm.set(speed);
-        } else {
-            rightArm.set(speed);
-        }
+    public void set(double speed) {
+        arms.set(speed);
     }
 
     public void stop() {
-        leftArm.set(0);
-        rightArm.set(0);
+        arms.set(0);
     }
 
-    private double getCombinedRotation() {
-        return (getLeftRotation() + getRightRotation()) / 2;
+    public double getArmCurrent() {
+    return pdp.getCurrent(RobotMap.CAN.ARMS);
     }
 
-    private double getLeftRotation() {
-        return toDegrees(-enc_left.getDistance());
+
+    //TODO: Change to counter
+    private double getRotation() {
+        //return toDegrees(-enc_left.getDistance());
+    return 1;
     }
 
-    private double getRightRotation() {
-        return toDegrees(enc_right.getDistance());
+
+    public boolean haveReachedPerpendicular() {
+        return false;/*hallEffectPerpendicular.get();*/
     }
 
-    private double getRotation(int side) {
-        if (side == 0) {
-            return getLeftRotation();
-        } else {
-            return getRightRotation();
-        }
-    }
-
-    public boolean haveReached(double position) {
-        return (Math.abs(getLeftRotation() - position) < 10) && (Math.abs(getRightRotation() - position) < 10);
+    public boolean haveReachedParallel() {
+        return false;/*hallEffectParallel.get();*/
     }
 
     public double toDegrees(double input) {
         return input / 1024 * 365;
     }
 
+    //TODO: Change to counter
     public void resetPosition() {
-        enc_left.reset();
-        enc_right.reset();
+        //enc_left.reset();
+        //enc_right.reset();
     }
 }

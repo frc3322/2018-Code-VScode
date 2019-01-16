@@ -7,10 +7,12 @@ import static frc.robot.Robot.drivetrain;
 
 public class TurnToAngle extends Command {
     private final double desiredAngle;
+    private final double turnAngle;
 
     public TurnToAngle(double degrees) {
         // Use requires() here to declare subsystem dependencies
         requires(drivetrain);
+        turnAngle = degrees;
         setTimeout(5);
 
         double initialAngle = drivetrain.navx.getAngle();
@@ -24,12 +26,12 @@ public class TurnToAngle extends Command {
 
     @Override
     protected void execute() {
-        drivetrain.driveAngle(0);
+        drivetrain.drive(0, turnAngle);
     }
 
     @Override
     protected boolean isFinished() {
-        return Math.abs(desiredAngle - drivetrain.navx.getAngle()) < 1 || isTimedOut();
+        return isTimedOut();
     }
 
     @Override
