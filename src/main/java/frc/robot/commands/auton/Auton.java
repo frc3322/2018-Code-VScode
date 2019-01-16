@@ -171,12 +171,37 @@ public class Auton extends CommandGroup {
 
     private void queuePath() {
         if (selectedPath == Path.DO_NOTHING) return;
+        if (startPos == Position.MIDDLE) {
+            if (switchSide == Position.RIGHT){
+                addSequential(new DriveDistance(110), 5);
+                addSequential(new ElevatorToSwitch());
+                addSequential(new ArmsToParallel(), 1);
+                addSequential(new EjectCube());
+            } else {
+                addSequential(new DriveDistance(110), 5);
+                addSequential(new IntakeIdle());
+            }
+        }
+        if (switchSide == startPos) {
+            if (startPos == Position.LEFT) {
+                addSequential(new DriveDistance(145), 5);
+                addSequential(new TurnToAngle(0.5), 1.5);
+                addSequential(new ElevatorToSwitch());
+                addSequential(new ArmsToParallel(), 1);
+                addSequential(new DriveDistance(12), 2);
+                addSequential(new EjectCube(), 3);
+            } else {
+                addSequential(new DriveDistance(145),5);
+                addSequential(new TurnToAngle(-0.5), 1.5);
+                addSequential(new ElevatorToSwitch());
+                addSequential(new ArmsToParallel(), 1);
+                addSequential(new DriveDistance(12), 2);
+                addSequential(new EjectCube(), 3);
+            }
+        } else addSequential(new DriveDistance(130));
 
-        addParallel(new ArmsToRetracted(), 3);
-        addParallel(new IntakeIdle());
-        addSequential(new ShiftLow());
 
-        switch (startPos) {
+        /*switch (startPos) {
             case RIGHT:
             case LEFT:
                 int rightInversion = startPos == Position.LEFT ? 1 : -1;

@@ -88,6 +88,11 @@ public class Robot extends TimedRobot
         SmartDashboard.putNumber("Acceleration", drivetrain.getAcceleration());
         SmartDashboard.putNumber("Current angle", drivetrain.navx.getAngle());
         SmartDashboard.putNumber("Elevator height", elevator.getHeight());
+        SmartDashboard.putNumber("Right Intake Current", intakes.getRightIntakeCurrent());
+        SmartDashboard.putNumber("Left Intake Current", intakes.getLeftIntakeCurrent());
+        SmartDashboard.putNumber("Arms Current", arms.getArmCurrent());
+
+
     }
 
     /**
@@ -127,6 +132,7 @@ public class Robot extends TimedRobot
         drivetrain.resetPositioning();
         elevator.resetEncoder();
         arms.resetPosition();
+
 
         autonomousCommand = new Auton(startChooser.getSelected(), objectiveChooser.getSelected(), priorityChooser.getSelected());
         autonomousCommand.start();
