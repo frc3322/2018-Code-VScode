@@ -40,6 +40,7 @@ public class OI
         button_y.whileHeld(new EjectCube(.5));
 
         bumper_left.whileHeld(new EjectCube(.35));
+        bumper_right.whileHeld(new Testing());
         //bumper_right.whileHeld(new PreparePickupCube());
         //bumper_right.whenReleased(new PickupCube());
 

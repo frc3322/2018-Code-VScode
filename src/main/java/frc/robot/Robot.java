@@ -89,6 +89,7 @@ public class Robot extends TimedRobot
         SmartDashboard.putNumber("Right Intake Current", intakes.getRightIntakeCurrent());
         SmartDashboard.putNumber("Left Intake Current", intakes.getLeftIntakeCurrent());
         SmartDashboard.putNumber("Arms Current", arms.getArmCurrent());
+        SmartDashboard.putNumber("SPARK Encoder", arms.getSparkEncoder());
 
 
     }

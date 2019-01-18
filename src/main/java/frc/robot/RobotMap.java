@@ -30,7 +30,7 @@ public class RobotMap
         public static final int ELEVATOR_MOTOR_2 = 13;
 
         // Arms
-        //public static final int ARMS = 2;
+        public static final int SPARK = 17;
         public static final int ARMS = 12;
 
         // Intake

@@ -1,6 +1,10 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -8,6 +12,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.PIDController;
 import frc.robot.RobotMap;
+import frc.robot.RobotMap.CAN;
 import frc.robot.commands.ArmsIdle;
 
 public class Arms extends Subsystem {
@@ -23,6 +28,8 @@ public class Arms extends Subsystem {
     public static final double POS_CLOSED = -10; // TODO
 
     private WPI_TalonSRX arms = new WPI_TalonSRX(RobotMap.CAN.ARMS);
+    private CANSparkMax spark = new CANSparkMax(RobotMap.CAN.SPARK, MotorType.kBrushless);
+    private CANEncoder m_encoder;
 
     PowerDistributionPanel pdp = new PowerDistributionPanel();
 
@@ -40,11 +47,16 @@ public class Arms extends Subsystem {
 
         //enc_left = new Encoder(RobotMap.DIO.ARM_LEFT_ENCODER_A, RobotMap.DIO.ARM_LEFT_ENCODER_B);
         //enc_right = new Encoder(RobotMap.DIO.ARM_RIGHT_ENCODER_A, RobotMap.DIO.ARM_RIGHT_ENCODER_B);
+        m_encoder = spark.getEncoder();
 
         pid[0] = new PIDController("Arms", ARMS_KP, ARMS_DECAY, ARMS_KI, ARMS_KD);
 
 
         pid[0].initialize(getRotation(), getRotation());
+    }
+
+    public double getSparkEncoder() {
+        return m_encoder.getPosition();
     }
 
     public void initDefaultCommand() {
@@ -113,4 +125,9 @@ public class Arms extends Subsystem {
         //enc_left.reset();
         //enc_right.reset();
     }
+    
+    public void sparkTest(double input) {
+        spark.set(input);
+    }
+
 }
