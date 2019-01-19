@@ -38,6 +38,8 @@ public class Arms extends Subsystem {
     private CANEncoder m_encoder_2;
     private CANEncoder m_encoder_3;
 
+    SpeedControllerGroup sparks = new SpeedControllerGroup(spark_0, spark_1, spark_2, spark_3);
+
     PowerDistributionPanel pdp = new PowerDistributionPanel();
 
     // TODO: make arms counter
@@ -144,10 +146,7 @@ public class Arms extends Subsystem {
     }
     
     public void sparkTest(double input) {
-        spark_0.set(input);
-        spark_1.set(input);
-        spark_2.set(input);
-        spark_3.set(input);
+        sparks.set(input);
     }
 
 }
