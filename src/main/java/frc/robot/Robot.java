@@ -89,10 +89,15 @@ public class Robot extends TimedRobot
         SmartDashboard.putNumber("Right Intake Current", intakes.getRightIntakeCurrent());
         SmartDashboard.putNumber("Left Intake Current", intakes.getLeftIntakeCurrent());
         SmartDashboard.putNumber("Arms Current", arms.getArmCurrent());
-        SmartDashboard.putNumber("SPARK Encoder 0", arms.getSparkEncoder0());
-        SmartDashboard.putNumber("SPARK Encoder 1", arms.getSparkEncoder1());
-        SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder2());
-        SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder3());
+        SmartDashboard.putNumber("SPARK Encoder 0", arms.getSparkEncoder(0));
+        SmartDashboard.putNumber("SPARK Encoder 1", arms.getSparkEncoder(1));
+        SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder(2));
+        SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder(3));
+        SmartDashboard.putNumber("SPARK Current 0", arms.getSparkCurrent(0));
+        SmartDashboard.putNumber("SPARK Current 1", arms.getSparkCurrent(1));
+        SmartDashboard.putNumber("SPARK Current 2", arms.getSparkCurrent(2));
+        SmartDashboard.putNumber("SPARK Current 3", arms.getSparkCurrent(3));
+
 
 
     }

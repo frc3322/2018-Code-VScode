@@ -32,12 +32,14 @@ public class Arms extends Subsystem {
     private CANSparkMax spark_1 = new CANSparkMax(RobotMap.CAN.SPARK_1, MotorType.kBrushless);
     private CANSparkMax spark_2 = new CANSparkMax(RobotMap.CAN.SPARK_2, MotorType.kBrushless);
     private CANSparkMax spark_3 = new CANSparkMax(RobotMap.CAN.SPARK_3, MotorType.kBrushless);
-
+    private CANSparkMax[] spark_array = {spark_0, spark_1, spark_2, spark_3};
+    
     private CANEncoder m_encoder_0;
     private CANEncoder m_encoder_1;
     private CANEncoder m_encoder_2;
     private CANEncoder m_encoder_3;
-
+    private CANEncoder[] encoder_array = {m_encoder_0, m_encoder_1, m_encoder_2, m_encoder_3};
+    
     SpeedControllerGroup sparks = new SpeedControllerGroup(spark_0, spark_1, spark_2, spark_3);
 
     PowerDistributionPanel pdp = new PowerDistributionPanel();
@@ -67,17 +69,12 @@ public class Arms extends Subsystem {
         pid[0].initialize(getRotation(), getRotation());
     }
 
-    public double getSparkEncoder0() {
-        return m_encoder_0.getPosition();
+    public double getSparkCurrent(int n) {
+        return spark_array[n].getOutputCurrent();
     }
-    public double getSparkEncoder1() {
-        return m_encoder_1.getPosition();
-    }
-    public double getSparkEncoder2() {
-        return m_encoder_2.getPosition();
-    }
-    public double getSparkEncoder3() {
-        return m_encoder_3.getPosition();
+
+    public double getSparkEncoder(int n) {
+        return encoder_array[n].getPosition();
     }
 
     public void initDefaultCommand() {
