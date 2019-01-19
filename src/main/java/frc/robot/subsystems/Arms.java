@@ -57,7 +57,9 @@ public class Arms extends Subsystem {
         //enc_left = new Encoder(RobotMap.DIO.ARM_LEFT_ENCODER_A, RobotMap.DIO.ARM_LEFT_ENCODER_B);
         //enc_right = new Encoder(RobotMap.DIO.ARM_RIGHT_ENCODER_A, RobotMap.DIO.ARM_RIGHT_ENCODER_B);
         m_encoder_0 = spark_0.getEncoder();
-        
+        m_encoder_1 = spark_1.getEncoder();
+        m_encoder_2 = spark_2.getEncoder();
+        m_encoder_3 = spark_3.getEncoder();
 
         pid[0] = new PIDController("Arms", ARMS_KP, ARMS_DECAY, ARMS_KI, ARMS_KD);
 
