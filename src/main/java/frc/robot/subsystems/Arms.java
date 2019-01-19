@@ -28,8 +28,15 @@ public class Arms extends Subsystem {
     public static final double POS_CLOSED = -10; // TODO
 
     private WPI_TalonSRX arms = new WPI_TalonSRX(RobotMap.CAN.ARMS);
-    private CANSparkMax spark = new CANSparkMax(RobotMap.CAN.SPARK, MotorType.kBrushless);
-    private CANEncoder m_encoder;
+    private CANSparkMax spark_0 = new CANSparkMax(RobotMap.CAN.SPARK_0, MotorType.kBrushless);
+    private CANSparkMax spark_1 = new CANSparkMax(RobotMap.CAN.SPARK_1, MotorType.kBrushless);
+    private CANSparkMax spark_2 = new CANSparkMax(RobotMap.CAN.SPARK_2, MotorType.kBrushless);
+    private CANSparkMax spark_3 = new CANSparkMax(RobotMap.CAN.SPARK_3, MotorType.kBrushless);
+
+    private CANEncoder m_encoder_0;
+    private CANEncoder m_encoder_1;
+    private CANEncoder m_encoder_2;
+    private CANEncoder m_encoder_3;
 
     PowerDistributionPanel pdp = new PowerDistributionPanel();
 
@@ -47,7 +54,8 @@ public class Arms extends Subsystem {
 
         //enc_left = new Encoder(RobotMap.DIO.ARM_LEFT_ENCODER_A, RobotMap.DIO.ARM_LEFT_ENCODER_B);
         //enc_right = new Encoder(RobotMap.DIO.ARM_RIGHT_ENCODER_A, RobotMap.DIO.ARM_RIGHT_ENCODER_B);
-        m_encoder = spark.getEncoder();
+        m_encoder_0 = spark_0.getEncoder();
+        
 
         pid[0] = new PIDController("Arms", ARMS_KP, ARMS_DECAY, ARMS_KI, ARMS_KD);
 
@@ -55,8 +63,17 @@ public class Arms extends Subsystem {
         pid[0].initialize(getRotation(), getRotation());
     }
 
-    public double getSparkEncoder() {
-        return m_encoder.getPosition();
+    public double getSparkEncoder0() {
+        return m_encoder_0.getPosition();
+    }
+    public double getSparkEncoder1() {
+        return m_encoder_1.getPosition();
+    }
+    public double getSparkEncoder2() {
+        return m_encoder_2.getPosition();
+    }
+    public double getSparkEncoder3() {
+        return m_encoder_3.getPosition();
     }
 
     public void initDefaultCommand() {
@@ -127,7 +144,10 @@ public class Arms extends Subsystem {
     }
     
     public void sparkTest(double input) {
-        spark.set(input);
+        spark_0.set(input);
+        spark_1.set(input);
+        spark_2.set(input);
+        spark_3.set(input);
     }
 
 }
