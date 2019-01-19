@@ -19,7 +19,7 @@ import frc.robot.OI;
 public class AutoAlign extends Command {
     
     public AutoAlign() {
-        Robot.drivetrain.drive(Robot.oi.stick.getRawAxis(1),Limelight.getTx());
+        Robot.drivetrain.drive(Robot.oi.chassisStick.getRawAxis(1),Limelight.getTx());
     }
 
     @Override
