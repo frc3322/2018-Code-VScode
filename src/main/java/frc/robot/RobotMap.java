@@ -73,6 +73,13 @@ public class RobotMap
         //public static final int ARM_RIGHT_ENCODER_B = 9;
     }
 
+    public static class ALOG {
+        //Ultrasonics
+        public static final int LEFT_ULTRASONIC = 0;
+        public static final int RIGHT_ULTRASONIC = 1;
+
+    }
+
     public static class XBOX {
         // Buttons
         public static final int BUTTON_A = 1;
