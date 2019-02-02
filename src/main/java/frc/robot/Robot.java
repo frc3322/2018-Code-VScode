@@ -7,7 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -39,7 +41,9 @@ public class Robot extends TimedRobot
     public static OI oi;
 
     public static String gameData;
-
+    public static AnalogInput ultraL = new AnalogInput(0);
+    public static AnalogInput ultraR = new AnalogInput(1);
+    
     private Command autonomousCommand;
     private SendableChooser<Auton.Position> startChooser = new SendableChooser<>();
     private SendableChooser<Auton.Objective> objectiveChooser = new SendableChooser<>();
@@ -77,6 +81,10 @@ public class Robot extends TimedRobot
 
     @Override
     public void robotPeriodic() {
+        int distL;
+        int distR;
+        distL = ultraL.getValue();
+        distR = ultraR.getValue();
         SmartDashboard.putNumber("Left ticks", drivetrain.getLeftTicks());
         SmartDashboard.putNumber("Right ticks", drivetrain.getRightTicks());
         SmartDashboard.putNumber("Left distance", drivetrain.getLeftDisplacement());
@@ -93,6 +101,8 @@ public class Robot extends TimedRobot
         SmartDashboard.putNumber("SPARK Encoder 1", arms.getSparkEncoder1());
         SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder2());
         SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder3());
+        SmartDashboard.putNumber("Left ultrasonic distance", distL);
+        SmartDashboard.putNumber("Right ultrasonic distance", distR);
 
 
     }
