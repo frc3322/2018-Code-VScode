@@ -37,7 +37,10 @@ public class Robot extends TimedRobot
     public static final Elevator elevator = new Elevator();
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
+    AnalogInput ultraL = new AnalogInput(RobotMap.ALOG.LEFT_ULTRASONIC);
+    AnalogInput ultraR = new AnalogInput(RobotMap.ALOG.RIGHT_ULTRASONIC);
 
+    
     public static OI oi;
 
     public static String gameData;
@@ -77,6 +80,15 @@ public class Robot extends TimedRobot
         SmartDashboard.putData("Start pos", startChooser);
         SmartDashboard.putData("Auton action", objectiveChooser);
         SmartDashboard.putData("Objective priority", priorityChooser);
+
+        int distL;
+        int distR;
+        ultraL.setAverageBits(8);
+        ultraR.setAverageBits(8);
+        distL = ultraL.getValue();
+        distR = ultraR.getValue();
+        SmartDashboard.putNumber("distL", distL);
+        SmartDashboard.putNumber("distR", distR);
     }
 
     @Override
