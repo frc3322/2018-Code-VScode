@@ -31,15 +31,15 @@ public class GoStraight extends Command{
 
     @Override
     protected void execute() {
-        if(Robot.ultraL.getValue() > 7 && Robot.ultraR.getValue() > 7){
+        /*if(distL > 7 && distR > 7){
             straightAngle = drivetrain.navx.getAngle();
             drivetrain.driveAngleInit(straightAngle);
             drivetrain.drive(1, 0);
-        }else{
+        } else {
             drivetrain.drive(0, turnAngle);
         }
 
-           
+          */ 
     }
 
     @Override
