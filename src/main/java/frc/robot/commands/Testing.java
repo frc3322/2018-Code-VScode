@@ -21,7 +21,7 @@ public class Testing extends Command {
     }
 
     protected void execute() {
-        Robot.arms.sparkTest(1);
+    //    Robot.arms.sparkTest(1);
     }
 
     
@@ -32,7 +32,7 @@ public class Testing extends Command {
     }
 
     protected void end() {
-        Robot.arms.sparkTest(0);
+    //    Robot.arms.sparkTest(0);
     }
 
     protected void interrupted() {
