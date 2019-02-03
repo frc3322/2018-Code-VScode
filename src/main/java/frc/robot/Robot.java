@@ -38,9 +38,7 @@ public class Robot extends TimedRobot
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
     AnalogInput ultraL = new AnalogInput(RobotMap.ALOG.LEFT_ULTRASONIC);
-    AnalogInput ultraR = new AnalogInput(RobotMap.ALOG.RIGHT_ULTRASONIC);
     public double distL;
-    public double distR;
 
     
     public static OI oi;
@@ -51,7 +49,7 @@ public class Robot extends TimedRobot
     private SendableChooser<Auton.Position> startChooser = new SendableChooser<>();
     private SendableChooser<Auton.Objective> objectiveChooser = new SendableChooser<>();
     private SendableChooser<Auton.Priority> priorityChooser = new SendableChooser<>();
-
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -82,13 +80,11 @@ public class Robot extends TimedRobot
         SmartDashboard.putData("Objective priority", priorityChooser);
 
         ultraL.setAverageBits(8);
-        ultraR.setAverageBits(8);
     }
 
     @Override
     public void robotPeriodic() {
         distL = ultraL.getValue();
-        distR = ultraR.getValue();
         SmartDashboard.putNumber("Left ticks", drivetrain.getLeftTicks());
         SmartDashboard.putNumber("Right ticks", drivetrain.getRightTicks());
         SmartDashboard.putNumber("Left distance", drivetrain.getLeftDisplacement());
@@ -106,7 +102,6 @@ public class Robot extends TimedRobot
         //SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder2());
         //SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder3());
         SmartDashboard.putNumber("Left ultrasonic distance", distL);
-        SmartDashboard.putNumber("Right ultrasonic distance", distR);
     }
 
     /**
