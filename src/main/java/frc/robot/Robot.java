@@ -98,13 +98,13 @@ public class Robot extends TimedRobot
         SmartDashboard.putNumber("Acceleration", drivetrain.getAcceleration());
         SmartDashboard.putNumber("Current angle", drivetrain.navx.getAngle());
         SmartDashboard.putNumber("Elevator height", elevator.getHeight());
-        SmartDashboard.putNumber("Right Intake Current", intakes.getRightIntakeCurrent());
+        //SmartDashboard.putNumber("Right Intake Current", intakes.getRightIntakeCurrent());
         SmartDashboard.putNumber("Left Intake Current", intakes.getLeftIntakeCurrent());
-        SmartDashboard.putNumber("Arms Current", arms.getArmCurrent());
-        SmartDashboard.putNumber("SPARK Encoder 0", arms.getSparkEncoder0());
-        SmartDashboard.putNumber("SPARK Encoder 1", arms.getSparkEncoder1());
-        SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder2());
-        SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder3());
+        //SmartDashboard.putNumber("Arms Current", arms.getArmCurrent());
+        //SmartDashboard.putNumber("SPARK Encoder 0", arms.getSparkEncoder0());
+        //SmartDashboard.putNumber("SPARK Encoder 1", arms.getSparkEncoder1());
+        //SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder2());
+        //SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder3());
         SmartDashboard.putNumber("Left ultrasonic distance", distL);
         SmartDashboard.putNumber("Right ultrasonic distance", distR);
     }

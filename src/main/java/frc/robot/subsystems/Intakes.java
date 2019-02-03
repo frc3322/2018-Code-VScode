@@ -34,9 +34,9 @@ public class Intakes extends Subsystem {
         return pdp.getCurrent(RobotMap.CAN.INTAKE_LEFT);
     }
 
-    public double getRightIntakeCurrent() {
+    /*public double getRightIntakeCurrent() {
         return pdp.getCurrent(RobotMap.CAN.INTAKE_RIGHT);
-    }
+    }*/
 
     public void initDefaultCommand() {
         setDefaultCommand(new IntakeIdle());

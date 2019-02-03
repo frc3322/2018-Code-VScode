@@ -57,7 +57,7 @@ public class Arms extends Subsystem {
         pid[0].initialize(getRotation(), getRotation());
     }
 
-    public double getSparkEncoder0() {
+    /*public double getSparkEncoder0() {
         return m_encoder_0.getPosition();
     }
     public double getSparkEncoder1() {
@@ -68,7 +68,7 @@ public class Arms extends Subsystem {
     }
     public double getSparkEncoder3() {
         return m_encoder_3.getPosition();
-    }
+    }*/
 
     public void initDefaultCommand() {
         setDefaultCommand(new ArmsIdle());
@@ -107,9 +107,9 @@ public class Arms extends Subsystem {
         arms.set(0);
     }
 
-    public double getArmCurrent() {
+    /*public double getArmCurrent() {
     return pdp.getCurrent(RobotMap.CAN.ARMS);
-    }
+    }*/
 
 
     //TODO: Change to counter
