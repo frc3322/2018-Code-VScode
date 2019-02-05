@@ -70,7 +70,7 @@ public class RobotMap
 
     public static class ALOG {
         //Ultrasonics
-        public static final int LEFT_ULTRASONIC = 0;
+        public static final int ULTRASONIC = 0;
     }
 
     public static class XBOX {

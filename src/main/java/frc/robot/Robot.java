@@ -37,8 +37,8 @@ public class Robot extends TimedRobot
     public static final Elevator elevator = new Elevator();
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
-    AnalogInput ultraL = new AnalogInput(RobotMap.ALOG.LEFT_ULTRASONIC);
-    public double distL;
+    AnalogInput ultra = new AnalogInput(RobotMap.ALOG.ULTRASONIC);
+    public double dist;
 
     
     public static OI oi;
@@ -79,12 +79,12 @@ public class Robot extends TimedRobot
         SmartDashboard.putData("Auton action", objectiveChooser);
         SmartDashboard.putData("Objective priority", priorityChooser);
 
-        ultraL.setAverageBits(8);
+        ultra.setAverageBits(8);
     }
 
     @Override
     public void robotPeriodic() {
-        distL = ultraL.getValue();
+        dist = ultra.getValue();
         SmartDashboard.putNumber("Left ticks", drivetrain.getLeftTicks());
         SmartDashboard.putNumber("Right ticks", drivetrain.getRightTicks());
         SmartDashboard.putNumber("Left distance", drivetrain.getLeftDisplacement());
@@ -101,7 +101,7 @@ public class Robot extends TimedRobot
         //SmartDashboard.putNumber("SPARK Encoder 1", arms.getSparkEncoder1());
         //SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder2());
         //SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder3());
-        SmartDashboard.putNumber("Left ultrasonic distance", distL);
+        SmartDashboard.putNumber(" ultrasonic distance", dist);
     }
 
     /**
