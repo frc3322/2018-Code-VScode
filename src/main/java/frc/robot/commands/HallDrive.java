@@ -3,11 +3,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.Robot;
 
 import static frc.robot.Robot.drivetrain;
 import static frc.robot.Robot.oi;
 
 public class HallDrive extends Command {
+    
 
     
 
@@ -23,7 +25,11 @@ public class HallDrive extends Command {
 
     @Override
     protected void execute() {
-        drivetrain.drive(-1,-1);
+        if (dist < 135){
+            drivetrain.drive(0,0.5);
+        } else {
+            drivetrain.drive(-0.5,0);
+        }
 
     }
 
@@ -42,3 +48,4 @@ public class HallDrive extends Command {
         super.interrupted();
     }
 }
+//closest the robot should get is 135 on the sensor*/
