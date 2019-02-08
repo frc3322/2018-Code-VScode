@@ -38,7 +38,7 @@ public class Robot extends TimedRobot
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
     AnalogInput ultra = new AnalogInput(RobotMap.ALOG.ULTRASONIC);
-    public double dist;
+    public static long dist;
 
     
     public static OI oi;

@@ -4,12 +4,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.Robot;
+import frc.robot.commands.HallRotate;
 
 import static frc.robot.Robot.drivetrain;
 import static frc.robot.Robot.oi;
 
 public class HallDrive extends Command {
-    
 
     
 
@@ -25,10 +25,10 @@ public class HallDrive extends Command {
 
     @Override
     protected void execute() {
-        if (dist < 135){
-            drivetrain.drive(0,0.5);
+        if (Robot.dist <= 135) {
+            new HallRotate();
         } else {
-            drivetrain.drive(-0.5,0);
+            drivetrain.drive(-0.3,0);
         }
 
     }
@@ -40,7 +40,7 @@ public class HallDrive extends Command {
 
     @Override
     protected void end() {
-        drivetrain.drive(0,0);
+        drivetrain.stop();
     }
 
     @Override
@@ -48,4 +48,4 @@ public class HallDrive extends Command {
         super.interrupted();
     }
 }
-//closest the robot should get is 135 on the sensor*/
+//closest the robot should get is 135 on the sensor

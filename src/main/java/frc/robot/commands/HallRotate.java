@@ -9,7 +9,7 @@ import static frc.robot.Robot.drivetrain;
 import static frc.robot.Robot.oi;
 
 public class HallRotate extends Command {
-    
+    public double initialAngle;
 
     
 
@@ -20,19 +20,19 @@ public class HallRotate extends Command {
 
     @Override
     protected void initialize() {
-        var initial_angle = drivetrain.navx.getAngle();
+        initialAngle = drivetrain.navx.getAngle();
     }
 
     @Override
     protected void execute() {
-        if (drivetrain.navx.getAngle() < initial_angle + 180) {
-            drivetrain.TurnToAngle();
-        }else{
-            drivetrain.stop();
+        while (drivetrain.navx.getAngle() < initialAngle + 180) {
+            drivetrain.drive(0,0.3);
         }
+        drivetrain.stop();
     }
 
     @Override
     protected boolean isFinished() {
         return false;
     }
+}
