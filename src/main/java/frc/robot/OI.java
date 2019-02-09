@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.commands.hallBot.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -54,8 +55,8 @@ public class OI
 
         button_back.toggleWhenPressed(new ToggleClimbMode());
 
-        //chassis_button_a.whenPressed(new HallDrive());
-        chassis_button_b.whenPressed(new HallRotate());
+        chassis_button_a.whileHeld(new HallBot());
+        chassis_button_b.whenPressed(new Stop());
         }
 
     //// TRIGGERING COMMANDS WITH BUTTONS

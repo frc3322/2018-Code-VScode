@@ -84,6 +84,7 @@ public class Robot extends TimedRobot
 
     @Override
     public void robotPeriodic() {
+        SmartDashboard.putNumber("NavX Angle", drivetrain.navx.getAngle());
         dist = ultra.getValue();
         SmartDashboard.putNumber("Left ticks", drivetrain.getLeftTicks());
         SmartDashboard.putNumber("Right ticks", drivetrain.getRightTicks());

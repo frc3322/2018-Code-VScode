@@ -1,38 +1,47 @@
-package frc.robot.commands;
+package frc.robot.commands.hallBot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.Robot;
+import frc.robot.commands.hallBot.HallRotate;
 
 import static frc.robot.Robot.drivetrain;
 import static frc.robot.Robot.oi;
 
-public class HallRotate extends Command {
-    public double initialAngle;
+public class HallDrive extends Command {
 
-    
-
-    public HallRotate() {
+    public HallDrive() {
         requires(drivetrain);
 
     }
 
     @Override
     protected void initialize() {
-        initialAngle = drivetrain.navx.getAngle();
     }
 
     @Override
     protected void execute() {
-        while (drivetrain.navx.getAngle() < initialAngle + 180) {
-            drivetrain.drive(0,0.3);
+        while (Robot.dist >= 155) {
+            drivetrain.drive(-0.5,0);
         }
         drivetrain.stop();
+
     }
 
     @Override
     protected boolean isFinished() {
-        return false;
+        return true;
+    }
+
+    @Override
+    protected void end() {
+        drivetrain.stop();
+    }
+
+    @Override
+    protected void interrupted() {
+        super.interrupted();
     }
 }
+//closest the robot should get is 135 on the sensor
