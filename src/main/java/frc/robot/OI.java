@@ -22,8 +22,11 @@ public class OI
     public Joystick chassisStick = new Joystick(0);
     public Joystick aboveChassisStick = new Joystick(1);
 
-    Button button_a = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_A);
-    Button button_b = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_B);
+    Button chassis_button_a = new JoystickButton(chassisStick, RobotMap.XBOX.BUTTON_A);
+    Button chassis_button_b = new JoystickButton(chassisStick, RobotMap.XBOX.BUTTON_B);
+
+    Button above_chassis_button_a = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_A);
+    Button above_chassis_button_b = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_B);
     Button button_x = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_X);
     Button button_y = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_Y);
     Button bumper_left = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUMPER_LEFT);
@@ -34,8 +37,8 @@ public class OI
     Button stick_right = new JoystickButton(aboveChassisStick, RobotMap.XBOX.STICK_RIGHT);
 
     public OI() {
-        button_a.whileHeld(new LiftArms());
-        button_b.whileHeld(new LowerArms());
+        above_chassis_button_a.whileHeld(new LiftArms());
+        above_chassis_button_b.whileHeld(new LowerArms());
         button_x.whileHeld(new IntakeCube());
         button_y.whileHeld(new EjectCube(.5));
 
