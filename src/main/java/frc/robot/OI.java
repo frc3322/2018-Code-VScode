@@ -53,6 +53,9 @@ public class OI
         button_start.whileHeld(new IntakeOpposite());
 
         button_back.toggleWhenPressed(new ToggleClimbMode());
+
+        //chassis_button_a.whenPressed(new HallDrive());
+        chassis_button_b.whenPressed(new HallRotate());
         }
 
     //// TRIGGERING COMMANDS WITH BUTTONS
