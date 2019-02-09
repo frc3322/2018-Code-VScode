@@ -25,7 +25,7 @@ public class HallRotate extends Command {
 
     @Override
     protected void execute() {
-        while (drivetrain.navx.getAngle() < initialAngle + 145) {
+        while (drivetrain.navx.getAngle() < initialAngle + 170) {
             drivetrain.drive(0,0.5);
         }
         drivetrain.stop();

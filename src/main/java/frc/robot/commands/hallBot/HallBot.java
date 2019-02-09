@@ -8,14 +8,13 @@
 package frc.robot.commands.hallBot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
 
 public class HallBot extends CommandGroup {
-  /**
-   * Add your docs here.
-   */
+
   public HallBot() {
     // Add Commands here:
-    addSequential(new HallDrive());
+    addSequential(new HallDrive()); 
     addSequential(new HallRotate());
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

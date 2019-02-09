@@ -22,8 +22,10 @@ public class HallDrive extends Command {
 
     @Override
     protected void execute() {
+        Robot.dist = Robot.ultra.getValue();
         while (Robot.dist >= 155) {
-            drivetrain.drive(-0.5,0);
+            drivetrain.drive(-0.7,0);
+            Robot.dist = Robot.ultra.getValue();
         }
         drivetrain.stop();
 

@@ -37,8 +37,8 @@ public class Robot extends TimedRobot
     public static final Elevator elevator = new Elevator();
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
-    AnalogInput ultra = new AnalogInput(RobotMap.ALOG.ULTRASONIC);
-    public static long dist;
+    public static final AnalogInput ultra = new AnalogInput(RobotMap.ALOG.ULTRASONIC);
+    public static double dist;
 
     
     public static OI oi;
