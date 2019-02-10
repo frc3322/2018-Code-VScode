@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.I2C;
 import frc.robot.commands.auton.Auton;
 import frc.robot.subsystems.Arms;
 import frc.robot.subsystems.Drivetrain;
@@ -38,6 +39,7 @@ public class Robot extends TimedRobot
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
     public static final AnalogInput ultra = new AnalogInput(RobotMap.ALOG.ULTRASONIC);
+    public static final I2C Arduino = new I2C(I2C.Port.kOnboard, 4);
     public static double dist;
 
     
@@ -50,6 +52,9 @@ public class Robot extends TimedRobot
     private SendableChooser<Auton.Objective> objectiveChooser = new SendableChooser<>();
     private SendableChooser<Auton.Priority> priorityChooser = new SendableChooser<>();
     
+    I2C i2c;
+    byte[] toSend = new byte[1];
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -174,6 +179,10 @@ public class Robot extends TimedRobot
     public void teleopPeriodic() 
     {
         Scheduler.getInstance().run();
+
+        boolean on = false;
+        System.out.println("Starting OperatorControl");
+
     }
 
     /**
