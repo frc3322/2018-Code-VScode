@@ -55,8 +55,9 @@ public class OI
 
         button_back.toggleWhenPressed(new ToggleClimbMode());
 
-        chassis_button_a.whileHeld(new HallBot());
-        chassis_button_b.whenPressed(new Stop());
+        //chassis_button_a.whileHeld(new HallBot());
+        chassis_button_a.whenPressed(new SendToArduino("yeet"));
+        chassis_button_b.whenPressed(new SendToArduino("yaught"));
         }
 
     //// TRIGGERING COMMANDS WITH BUTTONS

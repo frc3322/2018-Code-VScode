@@ -52,8 +52,6 @@ public class Robot extends TimedRobot
     private SendableChooser<Auton.Objective> objectiveChooser = new SendableChooser<>();
     private SendableChooser<Auton.Priority> priorityChooser = new SendableChooser<>();
     
-    I2C i2c;
-    byte[] toSend = new byte[1];
 
     /**
      * This function is run when the robot is first started up and should be
@@ -108,6 +106,7 @@ public class Robot extends TimedRobot
         //SmartDashboard.putNumber("SPARK Encoder 2", arms.getSparkEncoder2());
         //SmartDashboard.putNumber("SPARK Encoder 3", arms.getSparkEncoder3());
         SmartDashboard.putNumber(" ultrasonic distance", dist);
+        //LEDMode("Enabled ");
     }
 
     /**
@@ -204,5 +203,16 @@ public class Robot extends TimedRobot
         if (newGameData.length() == 3) {
             gameData = newGameData;
         }
+    }
+
+    public static void ledMode(String mode) {
+        SmartDashboard.putString("ledMode", mode);
+        char[] CharArray = mode.toCharArray();
+        byte[] WriteData = new byte[CharArray.length];
+        for (int i = 0; i < CharArray.length; i++) {
+            WriteData[i] = (byte) CharArray[i];
+        }
+        Arduino.writeBulk(WriteData, WriteData.length);
+        //Arduino.transaction(WriteData, WriteData.length, null, 0);
     }
 }
