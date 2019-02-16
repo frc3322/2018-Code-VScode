@@ -51,10 +51,10 @@ public class Robot extends TimedRobot
     private SendableChooser<Auton.Objective> objectiveChooser = new SendableChooser<>();
     private SendableChooser<Auton.Priority> priorityChooser = new SendableChooser<>();
 
-    private static final String kBlueAlliance = "Blue";
-    private static final String kRedAlliance = "Red";
-    private static final String kSafe = "Green";
-    private static final String kPurple = "Purple";
+    private static final String kRainbow = "Rainbow";
+    private static final String kRedToBlue = "RedToBlue";
+    private static final String kGlow = "Glow";
+    //private static final String kPurple = "Purple";
     private String m_autoSelected;
     private final SendableChooser<String> m_chooser = new SendableChooser<>();
     public static final I2C Arduino = new I2C(I2C.Port.kOnboard,4);
@@ -91,10 +91,10 @@ public class Robot extends TimedRobot
 
         ultra.setAverageBits(8);
 
-        m_chooser.setDefaultOption("Blue", kBlueAlliance);
-        m_chooser.addOption("Red", kRedAlliance);
-        m_chooser.addOption("Green", kSafe);
-        m_chooser.addOption("Purple", kPurple);
+        m_chooser.setDefaultOption("Rainbow", kRainbow);
+        m_chooser.addOption("RedToBlue", kRedToBlue);
+        m_chooser.addOption("Glow", kGlow);
+        //m_chooser.addOption("Purple", kPurple);
         SmartDashboard.putData("LEDs", m_chooser);
     }
 
@@ -168,18 +168,18 @@ public class Robot extends TimedRobot
         //m_autoSelected = SmartDashboard.getString("Choose Color", "");
         System.out.println("Choose Color" + m_autoSelected);
             switch (m_autoSelected) {
-            case kBlueAlliance:
+            case kRainbow:
                 ledMode("B");
                 break;
-            case kRedAlliance:
+            case kRedToBlue:
                 ledMode("R");
                 break;
-            case kSafe:
+            case kGlow:
                 ledMode("G");
                 break;
-            case kPurple:
+            /*case kPurple:
                 ledMode("P");
-                break;
+                break;*/
             default:
                 // Put default auto code here
                 break;
