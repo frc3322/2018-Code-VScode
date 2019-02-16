@@ -39,7 +39,6 @@ public class Robot extends TimedRobot
     public static final Arms arms = new Arms();
     public static final Intakes intakes = new Intakes();
     public static final AnalogInput ultra = new AnalogInput(RobotMap.ALOG.ULTRASONIC);
-    public static final I2C Arduino = new I2C(I2C.Port.kOnboard, 4);
     public static double dist;
 
     
@@ -51,6 +50,14 @@ public class Robot extends TimedRobot
     private SendableChooser<Auton.Position> startChooser = new SendableChooser<>();
     private SendableChooser<Auton.Objective> objectiveChooser = new SendableChooser<>();
     private SendableChooser<Auton.Priority> priorityChooser = new SendableChooser<>();
+
+    private static final String kBlueAlliance = "Blue";
+    private static final String kRedAlliance = "Red";
+    private static final String kSafe = "Green";
+    private static final String kPurple = "Purple";
+    private String m_autoSelected;
+    private final SendableChooser<String> m_chooser = new SendableChooser<>();
+    public static final I2C Arduino = new I2C(I2C.Port.kOnboard,4);
     
 
     /**
@@ -83,6 +90,12 @@ public class Robot extends TimedRobot
         SmartDashboard.putData("Objective priority", priorityChooser);
 
         ultra.setAverageBits(8);
+
+        m_chooser.setDefaultOption("Blue", kBlueAlliance);
+        m_chooser.addOption("Red", kRedAlliance);
+        m_chooser.addOption("Green", kSafe);
+        m_chooser.addOption("Purple", kPurple);
+        SmartDashboard.putData("LEDs", m_chooser);
     }
 
     @Override
@@ -150,6 +163,27 @@ public class Robot extends TimedRobot
 
         autonomousCommand = new Auton(startChooser.getSelected(), objectiveChooser.getSelected(), priorityChooser.getSelected());
         autonomousCommand.start();
+
+        m_autoSelected = m_chooser.getSelected();
+        //m_autoSelected = SmartDashboard.getString("Choose Color", "");
+        System.out.println("Choose Color" + m_autoSelected);
+            switch (m_autoSelected) {
+            case kBlueAlliance:
+                ledMode("B");
+                break;
+            case kRedAlliance:
+                ledMode("R");
+                break;
+            case kSafe:
+                ledMode("G");
+                break;
+            case kPurple:
+                ledMode("P");
+                break;
+            default:
+                // Put default auto code here
+                break;
+        }
     }
 
     /**
