@@ -152,7 +152,7 @@ public class Robot extends TimedRobot
      * chooser code above (like the commented example) or additional comparisons
      * to the switch structure below with additional strings & commands.
      */
-    @Override
+     @Override
     public void autonomousInit() 
     {
         updateAutonData();
@@ -167,7 +167,7 @@ public class Robot extends TimedRobot
         m_autoSelected = m_chooser.getSelected();
         //m_autoSelected = SmartDashboard.getString("Choose Color", "");
         System.out.println("Choose Color" + m_autoSelected);
-            switch (m_autoSelected) {
+          switch (m_autoSelected) {
             case kRainbow:
                 ledMode("B");
                 break;
@@ -179,12 +179,13 @@ public class Robot extends TimedRobot
                 break;
             /*case kPurple:
                 ledMode("P");
-                break;*/
+                break;*/        
             default:
                 // Put default auto code here
                 break;
+          }
         }
-    }
+    
 
     /**
      * This function is called periodically during autonomous.

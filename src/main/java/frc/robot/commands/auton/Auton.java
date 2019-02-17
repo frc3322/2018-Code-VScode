@@ -64,8 +64,8 @@ public class Auton extends CommandGroup {
         this.priority = priority;
 
         String gameData = Robot.gameData;
-        switchSide = gameData.substring(0, 1).equals("L") ? Position.LEFT : Position.RIGHT;
-        scaleSide = gameData.substring(1, 2).equals("L") ? Position.LEFT : Position.RIGHT;
+        //switchSide = gameData.substring(0, 1).equals("L") ? Position.LEFT : Position.RIGHT;
+        //scaleSide = gameData.substring(1, 2).equals("L") ? Position.LEFT : Position.RIGHT;
 
         // Make sure input is valid
         if (startPos == null || objective == null || priority == null) {
