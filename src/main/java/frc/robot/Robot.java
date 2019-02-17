@@ -186,7 +186,7 @@ public class Robot extends TimedRobot
           }
         }
     
-
+    
     /**
      * This function is called periodically during autonomous.
      */
@@ -200,6 +200,8 @@ public class Robot extends TimedRobot
     public void teleopInit() 
     {
         drivetrain.resetPositioning();
+
+        
 
         if (autonomousCommand != null) {
             autonomousCommand.cancel();

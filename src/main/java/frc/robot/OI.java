@@ -25,6 +25,7 @@ public class OI
 
     Button chassis_button_a = new JoystickButton(chassisStick, RobotMap.XBOX.BUTTON_A);
     Button chassis_button_b = new JoystickButton(chassisStick, RobotMap.XBOX.BUTTON_B);
+    Button chassis_button_x = new JoystickButton(chassisStick, RobotMap.XBOX.BUTTON_X);
 
     Button above_chassis_button_a = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_A);
     Button above_chassis_button_b = new JoystickButton(aboveChassisStick, RobotMap.XBOX.BUTTON_B);
@@ -56,8 +57,9 @@ public class OI
         button_back.toggleWhenPressed(new ToggleClimbMode());
 
         //chassis_button_a.whileHeld(new HallBot());
-        chassis_button_a.whenPressed(new SendToArduino("yeet"));
-        chassis_button_b.whenPressed(new SendToArduino("yaught"));
+        chassis_button_a.whenPressed(new LEDMode("B"));
+        chassis_button_b.whenPressed(new LEDMode("R"));
+        chassis_button_x.whenPressed(new LEDMode("G"));
         }
 
     //// TRIGGERING COMMANDS WITH BUTTONS
